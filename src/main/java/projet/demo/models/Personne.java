@@ -8,9 +8,13 @@ import javax.persistence.Table;
 
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+
+
+
 import javax.persistence.Column;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+
 
 @Entity
 @Table(name = "personne")
@@ -29,6 +33,8 @@ public class Personne {
 
         @Column(name = "telephone")
         int telephone;
+
+       
 
         @Enumerated(EnumType.STRING)
         @Column(name = "role" )

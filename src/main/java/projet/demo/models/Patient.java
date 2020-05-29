@@ -1,11 +1,12 @@
 package projet.demo.models;
 import javax.persistence.*;
+import java.util.*;
 
 
 @Entity
 @Table(name = "patient")
 @PrimaryKeyJoinColumn(name = "id")
-public class Patient extends Personne {
+public class Patient extends Personne  {
 
         @Column(name = "date_naissance")
         String date_naissance ;
@@ -40,6 +41,10 @@ public class Patient extends Personne {
         @Column(name = "groupe_sanguin")
         String groupe_sanguin ;
 
+        @OneToMany(mappedBy = "patient")
+        private List<Consultation> consultations;
+
+ 
         public String getDate_naissance() {
             return date_naissance;
         }
@@ -126,6 +131,14 @@ public class Patient extends Personne {
 
         public void setGroupe_sanguin(String groupe_sanguin) {
             this.groupe_sanguin = groupe_sanguin;
+        }
+
+        public List<Consultation> getConsultations() {
+            return consultations;
+        }
+
+        public void setConsultations(List<Consultation> consultations) {
+            this.consultations = consultations;
         }
     } 
     
