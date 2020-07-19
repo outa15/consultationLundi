@@ -1,56 +1,27 @@
-package projet.demo.models;
-//hadi katjib koulchi les import 
-import javax.persistence.*;
-//
-import com.fasterxml.jackson.annotation.*;
-//import java.time.LocalDateTime;
+package projet.demo.dto;
 
-@Table
-@Entity(name="consultation")
-// property = "id" pour eviter les boucles , on ne prend que l'id de la table medecin ou patient  pour ne pas repeter une liste de consultations
-@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
-public class Consultation {
+import projet.demo.models.Statut;
+
+public class ConsultationDto {
 
 
-        @Id
-        @GeneratedValue(strategy = GenerationType.AUTO)
-        Long id;
-        
-        
-
-        @Column(name = "date_debut")
+        Long id;        
         //private LocalDateTime dateDebut; // 
         private String dateDebut;
-        @Column(name = "date_fin")
         //private LocalDateTime dateFin;
         private String dateFin;
        
-        @Column(name = "details")
         private String details;
 
-        @Column(name = "montant")
         private Long montant;
 
-        @Enumerated(EnumType.STRING)
-        @Column(name = "statut")
         private Statut statut;
 
-        @Column(name = "symptomes")
         private String symptomes;
 
-        @Column(name = "traitement")
         private String traitement;
 
-        
-
-        @ManyToOne(fetch = FetchType.EAGER)
-        private Patient patient;
-        
-        // traduction de la relation un medecin peut faire plsrs 
-        @ManyToOne(fetch = FetchType.EAGER)
-        private Medecin medecin;
-
-        public Long getId() {
+ public Long getId() {
                 return id;
         }
 
@@ -113,29 +84,4 @@ public class Consultation {
         public void setMontant(Long montant) {
                 this.montant = montant;
         }
-
-        public Medecin getMedecin() {
-                return medecin;
-        }
-
-        public void setMedecin(Medecin medecin) {
-                if(medecin instanceof Medecin){
-                        this.medecin = medecin;
-                }
-                
-        }
-
-        public Patient getPatient() {
-                return patient;
-        }
-
-        public void setPatient(Patient patient) {
-                if(patient instanceof Patient){
-                        this.patient = patient;
-                }
-                
-        }
-      
-       
-
 }

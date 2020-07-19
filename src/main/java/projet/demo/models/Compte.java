@@ -8,7 +8,7 @@ import com.fasterxml.jackson.annotation.*;
 
 @Table
 @Entity(name="compte")
- // @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id") 
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id") 
 public class Compte {
 
         @Id 

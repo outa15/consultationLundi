@@ -4,6 +4,7 @@ import projet.demo.repository.PatientRepository;
 import projet.demo.service.PatientService;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 
 import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
@@ -18,7 +19,9 @@ public class PatientController {
     @Autowired
     PatientService PatientService;
 
-    @PostMapping("/patient")
+    @PostMapping(value = "/patient", 
+                consumes= APPLICATION_JSON_VALUE, 
+                produces = APPLICATION_JSON_VALUE)
     public Patient addPatient(@Valid @RequestBody Patient patient){
         return patientRepository.save(patient);
     } 
