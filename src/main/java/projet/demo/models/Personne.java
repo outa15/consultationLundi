@@ -1,24 +1,11 @@
 package projet.demo.models;
 
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Table;
-
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-
-
-
-import javax.persistence.Column;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
-
-
+import javax.persistence.*;
+import com.fasterxml.jackson.annotation.*;
 @Entity
 @Table(name = "personne")
 @Inheritance(strategy = InheritanceType.JOINED)
+//@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 public class Personne {
 
         @Id
@@ -27,6 +14,17 @@ public class Personne {
 
         @Column(name = "nom")
         String nom;
+
+       
+      
+  /*  // relation One to one avec compte
+    @OneToOne(fetch = FetchType.EAGER,
+    cascade =  CascadeType.ALL,
+    mappedBy = "personne") // on trouvera dans compte personne_id */
+
+
+        @OneToOne(fetch = FetchType.EAGER,mappedBy = "personne")
+        private Compte compte; 
 
         @Column(name = "prenom")
         String prenom;
@@ -44,40 +42,53 @@ public class Personne {
             return id;
         }
 
-        public void setId(final Long id) {
+        public void setId(Long id) {
             this.id = id;
         }
-        
+
         public String getNom() {
             return nom;
         }
 
-        public void setNom(final String nom) {
+        public void setNom(String nom) {
             this.nom = nom;
+        }
+
+        public Compte getCompte() {
+            return compte;
+        }
+
+        public void setCompte(Compte compte) {
+            if(compte instanceof Compte){
+            this.compte = compte;}
         }
 
         public String getPrenom() {
             return prenom;
         }
 
+        public void setPrenom(String prenom) {
+            this.prenom = prenom;
+        }
+
+        public int getTelephone() {
+            return telephone;
+        }
+
+        public void setTelephone(int telephone) {
+            this.telephone = telephone;
+        }
 
         public Role getRole() {
             return role;
         }
 
-        public void setPrenom(final String prenom) {
-            this.prenom = prenom;
-        }
-        
-        public int getTelephone() {
-            return telephone;
-        }
-
-        public void setTelephone(final int telephone) {
-            this.telephone = telephone;
-        }
-
-        public void setRole(final Role role) {
+        public void setRole(Role role) {
             this.role = role;
         }
+
+       
+      
+
+      
 }

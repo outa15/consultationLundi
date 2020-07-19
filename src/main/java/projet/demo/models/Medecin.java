@@ -7,6 +7,7 @@ import java.util.*;
 @Entity
 @Table(name = "medecin")
 @PrimaryKeyJoinColumn(name = "id")
+
 public class Medecin extends Personne {
     @Column(name = "specialite")
     String specialite ;
@@ -30,6 +31,14 @@ public class Medecin extends Personne {
     public void setConsultations(List<Consultation> consultations) {
         this.consultations = consultations;
         
+    }
+
+    public Medecin() {
+    }
+
+    public Medecin(String specialite, List<Consultation> consultations) {
+        this.specialite = specialite;
+        this.consultations = consultations;
     }
 
     

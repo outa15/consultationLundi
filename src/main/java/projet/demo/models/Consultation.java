@@ -7,7 +7,7 @@ import com.fasterxml.jackson.annotation.*;
 
 @Table
 @Entity(name="consultation")
-// property = "id" pour eviter les boucles , on ne prend que l'id de la table medecin ou pation pour ne pas repeter une liste de consultations
+// property = "id" pour eviter les boucles , on ne prend que l'id de la table medecin ou patient  pour ne pas repeter une liste de consultations
 @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 public class Consultation {
 
@@ -41,18 +41,16 @@ public class Consultation {
         @Column(name = "traitement")
         private String traitement;
 
+        
+
         @ManyToOne(fetch = FetchType.EAGER)
+        @JsonManagedReference
         private Patient patient;
         
         // traduction de la relation un medecin peut faire plsrs 
         @ManyToOne(fetch = FetchType.EAGER)
+        @JsonManagedReference
         private Medecin medecin;
-    
-       
-
-
-
-        
 
         public Long getId() {
                 return id;
@@ -118,6 +116,7 @@ public class Consultation {
                 this.montant = montant;
         }
 
+        @JsonManagedReference
         public Medecin getMedecin() {
                 return medecin;
         }
@@ -128,7 +127,7 @@ public class Consultation {
                 }
                 
         }
-
+        @JsonManagedReference
         public Patient getPatient() {
                 return patient;
         }
