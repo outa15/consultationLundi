@@ -30,7 +30,7 @@ public class Personne {
         String prenom;
 
         @Column(name = "telephone")
-        int telephone;
+        String telephone;
 
        
 
@@ -71,11 +71,11 @@ public class Personne {
             this.prenom = prenom;
         }
 
-        public int getTelephone() {
+        public String getTelephone() {
             return telephone;
         }
 
-        public void setTelephone(int telephone) {
+        public void setTelephone(String telephone) {
             this.telephone = telephone;
         }
 

@@ -21,7 +21,7 @@ public class PersonneService {
         List<Personne> patients = new ArrayList<Personne>();
         personnes=( List<Personne>)personneRepository.findAll();
         for ( Personne personne :personnes){
-            if(personne.getRole().equals(Role.PATIENT)){
+            if(Role.PATIENT.equals(personne.getRole())) {
                 patients.add(personne);
             }
         } 

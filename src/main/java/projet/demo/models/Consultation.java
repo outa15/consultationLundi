@@ -48,7 +48,7 @@ public class Consultation {
         
         // traduction de la relation un medecin peut faire plsrs 
         @ManyToOne(fetch = FetchType.EAGER)
-        private Medecin medecin;
+        private Medecin medecin; 
 
         public Long getId() {
                 return id;

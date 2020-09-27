@@ -1,7 +1,7 @@
 package projet.demo.models;
 import javax.persistence.*;
 import java.util.*;
-
+import com.fasterxml.jackson.annotation.*;
 
 @Entity
 @Table(name = "patient")
@@ -44,6 +44,9 @@ public class Patient extends Personne  {
         @OneToMany(mappedBy = "patient")
         private List<Consultation> consultations;
 
+        @OneToMany(mappedBy = "patientt")
+        @JsonBackReference
+        private List<Reservation> reservations;
  
         public String getDate_naissance() {
             return date_naissance;
@@ -51,6 +54,15 @@ public class Patient extends Personne  {
 
         public void setDate_naissance(String date_naissance) {
             this.date_naissance = date_naissance;
+        }
+
+        public void setReservations(List<Reservation> reservations) {
+            this.reservations = reservations;
+            
+        }
+    
+        public List<Reservation> getReservations() {
+            return reservations;
         }
 
         public String getLieu_naissance() {
@@ -141,4 +153,3 @@ public class Patient extends Personne  {
             this.consultations = consultations;
         }
     } 
-    
