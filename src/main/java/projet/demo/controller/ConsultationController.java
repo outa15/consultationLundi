@@ -89,6 +89,6 @@ public class ConsultationController {
           return ResponseEntity.ok(Updatedconsultt);
     } */
 
-    
+    int a=0;
 
 }
