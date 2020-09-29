@@ -24,7 +24,7 @@ public class CompteController {
     CompteService compteService ;
     
     @Autowired
-    CompteRepository Repo;
+    CompteRepository Repooooo;
     
 
 
