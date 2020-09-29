@@ -26,8 +26,7 @@ public class ConsultationController {
     @Autowired
     ConsultationRepository consultationRepository;
     
-    @Autowired
-    ConsultationRepository consultationRepositoryyg;
+    
    
     @GetMapping(value="/consultations")
     public List<Consultation> getAllConsultations() {
