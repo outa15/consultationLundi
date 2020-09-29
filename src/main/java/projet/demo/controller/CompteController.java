@@ -24,7 +24,8 @@ public class CompteController {
     CompteService compteService ;
     
     @Autowired
-    CompteService compteServicee ;
+    CompteRepository Repo;
+    
 
 
     @GetMapping(value="/compte")
