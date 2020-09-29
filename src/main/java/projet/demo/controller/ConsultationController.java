@@ -26,6 +26,8 @@ public class ConsultationController {
     @Autowired
     ConsultationRepository consultationRepository;
     
+    @Autowired
+    ConsultationRepository consultationRepositoryy;
    
     @GetMapping(value="/consultations")
     public List<Consultation> getAllConsultations() {
@@ -89,6 +91,6 @@ public class ConsultationController {
           return ResponseEntity.ok(Updatedconsultt);
     } */
 
-    int a=0;
+   
 
 }
